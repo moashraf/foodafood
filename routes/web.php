@@ -18,4 +18,21 @@ Route::resource('All_Product', 'ProductController');
 Route::resource('Categories', 'CategoriesProductController');
 Auth::routes();
 
- 
+
+/*
+|--------------------------------------------------------------------------
+|                   admin              admin 
+|--------------------------------------------------------------------------
+*/
+
+Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function ()
+{
+
+	
+Route::resource('products', 'ProductsController');
+Route::resource('categoriesProducts', 'Categories_ProductsController');
+Route::resource('siteStings', 'siteStingsController');
+Route::resource('sliders', 'sliderController');
+
+
+});
