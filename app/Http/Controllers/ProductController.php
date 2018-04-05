@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +13,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        $References = Boats::limit(20)->get();
+ //        $References = Boats::limit(20)->get();
       //  $flight = Sitesettings::limit(1)->get();
-        return view('main.index', 
+        return view('main.All_products', 
             [
                // 'References' => $References, 
                // 'getallnews' => $flight, 

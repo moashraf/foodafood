@@ -7,9 +7,11 @@
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" /><!-- bootstrap css -->
+<link href="css/gallery.css" rel="stylesheet" type="text/css" media="all" /><!-- gallery css -->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/jQuery.lightninBox.css" rel="stylesheet" type="text/css" media="all" /><!-- for gallery lightninBox css -->
 <link href="css/font-awesome.css" rel="stylesheet"><!-- fontawesome css -->
+
 </head>
 <body>
 
@@ -20,11 +22,11 @@
 				<div class="container">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
+				    	<span class="sr-only">Toggle navigation</span>
+				    	<span class="icon-bar"></span>
+				    	<span class="icon-bar"></span>
+				    	<span class="icon-bar"></span>
+			    	</button>
 						<a class="navbar-brand" href="index.html">
 							<img class="img-responsive" src="images/logo.png" alt="" />
 						</a>
@@ -33,17 +35,17 @@
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<nav>
 							<ul class="nav navbar-nav">
-								<li><a href="index.html">الرئيسية </a></li>
-								<li><a href="about.html" class="active">عن الشركة </a></li>
-								<!-- <li><a href="#services-fo">خدماتنا </a></li> -->
-								<li><a href="gallery.html" >منتجاتنا </a></li>
-								<li><a href="contact.html" >الاتصال بنا </a></li>
+								<li><a href="{{ URL::to('/')}}" class="active">الرئيسية </a></li>
+								<li><a href="{{ URL::to('/about')}}">عن الشركة </a></li>
+								<li><a href="{{ URL::to('/All_Product')}}">منتجاتنا </a></li>
+								<li><a href="{{ URL::to('/Categories')}}">تصنيفات </a></li>  
+								<li><a href="{{ URL::to('/contact')}}">الاتصال بنا </a></li>
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">اللغة <b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><a href="about-en.html">English</a></li>
+										<li><a href="{{ URL::to('/')}}">English</a></li>
 										<li class="divider"></li>
-										<li><a href="about.html">العربية </a></li>
+										<li><a href="{{ URL::to('/')}}">العربية </a></li>
 									</ul>
 								</li>
 							</ul>
@@ -57,34 +59,13 @@
 	</div>
 	<!-- //header -->
 
-<!-- innerpages_banner -->
-	<div class="innerpages_bannerco">
-		<h2>عن الشركــة </h2>
-	</div>
-<!-- //innerpages_banner -->
-
-<!-- welcome -->
-<div class="welcome" style="background:none">
-	<div class="container">
-		<div class="col-md-6 welcome-w3lright">
-			<div class="video-grid-single-page-agileits">
-				<div data-video="qvtjaAW3m-E" id="video"> <img src="images/about.png" alt="" class="img-responsive" /> </div>
-			</div>
-		</div>
-		<div class="col-md-6 welcome_left">
-			<h3 class="agileits-title">مرحبا 	"فودا فود "</h3>
-			<h4> مصنع بسكويت سوري متخصص في تصنيع البسكويت السادة والويفر والمغطس والسندوتش عالي الجودة </h4>
-			<p>مصنع بسكويت سوري متخصص في تصنيع البسكويت السادة والويفر والمغطس والسندوتش عالي الجودة . مصنع بسكويت سوري متخصص في تصنيع البسكويت السادة والويفر والمغطس والسندوتش عالي الجودة . مصنع بسكويت سوري متخصص في تصنيع البسكويت السادة والويفر والمغطس والسندوتش عالي الجودة .</p>
-		</div>
-		<div class="clearfix"> </div>
-	</div>
-</div>
-<!-- //welcome -->
 
 
-<div class="contact-map" style="width: 100%; margin-top: 50px;">
-   <iframe src="https://wego.here.com/directions/mix//%D8%A7%D9%84%D8%B4%D8%B1%D9%83%D8%A9-%D8%A7%D9%84%D8%B3%D9%88%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%8A%D8%A9-%D9%84%D9%84%D8%B5%D9%86%D8%A7%D8%B9%D8%A7%D8%AA-%D8%A7%D9%84%D8%BA%D8%B0%D8%A7%D8%A6%D9%8A%D8%A9,-%D9%85%D8%AF%D9%8A%D9%86%D8%A9-%D8%A7%D9%84%D8%B3%D8%A7%D8%AF%D8%A7%D8%AA-%D8%A7%D9%84%D9%85%D9%86%D8%B7%D9%82%D8%A9-%D8%A7%D9%84%D8%B5%D9%86%D8%A7%D8%B9%D9%8A%D8%A9-%D8%A7%D9%84%D8%A3%D9%88%D9%84%D9%89,-32897-Sadat-City:e-eyJuYW1lIjoiXHUwNjI3XHUwNjQ0XHUwNjM0XHUwNjMxXHUwNjQzXHUwNjI5IFx1MDYyN1x1MDY0NFx1MDYzM1x1MDY0OFx1MDYzMVx1MDY0YVx1MDYyOSBcdTA2MjdcdTA2NDRcdTA2NDVcdTA2MzVcdTA2MzFcdTA2NGFcdTA2MjkgXHUwNjQ0XHUwNjQ0XHUwNjM1XHUwNjQ2XHUwNjI3XHUwNjM5XHUwNjI3XHUwNjJhIFx1MDYyN1x1MDY0NFx1MDYzYVx1MDYzMFx1MDYyN1x1MDYyNlx1MDY0YVx1MDYyOSIsImFkZHJlc3MiOiJcdTA2NDVcdTA2MmZcdTA2NGFcdTA2NDZcdTA2MjkgXHUwNjI3XHUwNjQ0XHUwNjMzXHUwNjI3XHUwNjJmXHUwNjI3XHUwNjJhIC0gXHUwNjI3XHUwNjQ0XHUwNjQ1XHUwNjQ2XHUwNjM3XHUwNjQyXHUwNjI5IFx1MDYyN1x1MDY0NFx1MDYzNVx1MDY0Nlx1MDYyN1x1MDYzOVx1MDY0YVx1MDYyOSBcdTA2MjdcdTA2NDRcdTA2MjNcdTA2NDhcdTA2NDRcdTA2NDksIFNhZGF0IENpdHksIEFsIEJ1aGF5cmFoLCBFZ3lwdCwgMzI4OTciLCJsYXRpdHVkZSI6MzAuMzY5MzIwNjkwMTA3LCJsb25naXR1ZGUiOjMwLjUzNzg3MjMxNDQ1MywicHJvdmlkZXJOYW1lIjoiZmFjZWJvb2siLCJwcm92aWRlcklkIjoxNzM0NDU5NDMzNDM0ODExfQ==?map=30.36932,30.53787,15,normal&fb_locale=en_US" width="100%" height="200" frameborder="0" style="border:0"></iframe>
-</div>
+
+
+	@yield('content')	
+
+
 <!-- footer -->
 <div class="footer">
 	<div class="container">
@@ -166,7 +147,7 @@
 			<div class="clearfix"> </div>
 		</div>
 		<div class="agileinfo_copyright">
-			<p>© 2018 فودا فود. جميع الحقوق محفوظة | تم التصميم والتطوير بواسطة <a href="https://w3layouts.com/">Be4e.Marketing</a>
+			<p>© 2018 فودا فود. جميع الحقوق محفوظة | تم التصميم والتطوير بواسطة <a href="#">Be4e.Marketing</a>
 			</p>
 		</div>
 	</div>
@@ -204,15 +185,6 @@
 	<!-- here starts scrolling icon -->
 	<script type="text/javascript">
 		$(document).ready(function() {
-			/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear'
-				};
-			*/
-
 			$().UItoTop({ easingType: 'easeOutQuart' });
 
 			});
@@ -226,3 +198,4 @@
 
 </body>
 </html>
+
