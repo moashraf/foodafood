@@ -45,7 +45,7 @@ class  ProductsPhotos extends Model
      * @var array
      */
     public static $rules = [
-        'Photo' => 'required',
+        'Photo' => 'required|min:1|mimes:jpeg,jpg,png,gif',
         'Product_id' => 'required' 
     ];
 

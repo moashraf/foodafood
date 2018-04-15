@@ -12,7 +12,7 @@
 
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['route' => 'siteStings.store']) !!}
+                    {!! Form::open(['route' => 'siteStings.store' ,'files' => true,'enctype' => 'multipart/form-data' ]) !!}
 
                         @include('site_stings.fields')
 

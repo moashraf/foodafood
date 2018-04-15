@@ -1,18 +1,23 @@
 <table class="table table-responsive" id="sliders-table">
     <thead>
         <tr>
-            <th>Lang</th>
-        <th>Single Photo</th>
         <th>Title</th>
-            <th colspan="3">Action</th>
+        
+        <th>Single Photo</th>
+        <th>Lang</th>
+        
+       <th colspan="3">Action</th>
         </tr>
     </thead>
     <tbody>
     @foreach($sliders as $slider)
         <tr>
-            <td>{!! $slider->lang !!}</td>
-            <td>{!! $slider->single_photo !!}</td>
-            <td>{!! $slider->title !!}</td>
+             <td>{!! $slider->title !!}</td>
+        
+             <td>     <img src="{{ URL::to('/').'/images/'.$slider->single_photo}}"  width="50" height="50">  </td>
+             
+             <td>{!! $slider->lang !!}</td>
+
             <td>
                 {!! Form::open(['route' => ['sliders.destroy', $slider->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->text('body');
             $table->string('single_photo');
-            $table->integer('photos_id');
+            //$table->integer('photos_id');
             $table->text('component');
             $table->string('Net_weight');
             $table->string('Note');

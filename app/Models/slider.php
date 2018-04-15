@@ -36,9 +36,9 @@ class slider extends Model
      * @var array
      */
     protected $casts = [
-        'lang' => 'string',
-        'single_photo' => 'string',
-        'title' => 'string'
+        'lang' => 'string|min:1',
+        'single_photo' => 'string|min:3|mimes:jpeg,jpg,png,gif',
+        'title' => 'string|min:3'
     ];
 
     /**

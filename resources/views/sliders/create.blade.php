@@ -12,7 +12,7 @@
 
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['route' => 'sliders.store']) !!}
+                    {!! Form::open(['route' => 'sliders.store' ,'files' => true,'enctype' => 'multipart/form-data' ]) !!}
 
                         @include('sliders.fields')
 

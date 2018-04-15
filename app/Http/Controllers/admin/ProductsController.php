@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\Categories_Products;
+use App\Models\ProductsPhotos;
 
 class ProductsController extends AppBaseController
 {
@@ -42,8 +44,9 @@ class ProductsController extends AppBaseController
      * @return Response
      */
     public function create()
-    {
-        return view('products.create');
+    { $cat = Categories_Products::all();
+        return view('products.create')
+        ->with('cat', $cat);
     }
 
     /**
@@ -56,8 +59,37 @@ class ProductsController extends AppBaseController
     public function store(CreateProductsRequest $request)
     {
         $input = $request->all();
-
+        $photoexplode = $request->single_photo->getClientOriginalName();
+        $photoexplode = explode(".", $photoexplode);
+        $namerand = rand();
+        $namerand.= $photoexplode[0];
+        $imageNameGallery = $namerand . '.' . $request->single_photo->getClientOriginalExtension();
+        $request->single_photo->move(base_path() . '/public/images/', $imageNameGallery);
+        $input['single_photo']=    $imageNameGallery;
         $products = $this->productsRepository->create($input);
+
+        if($request->photos_id){ 
+
+
+        foreach($request->photos_id as $photo1)
+        {
+        $photoexplode = $photo1->getClientOriginalName();
+        $photoexplode = explode(".", $photoexplode);
+        $namerand = rand();
+        $namerand.= $photoexplode[0];
+        $imageNameGallery = $namerand . '.' . $photo1->getClientOriginalExtension();
+        $photo1->move(base_path() . '/public/images/', $imageNameGallery);
+        $Singleboatgallery = new ProductsPhotos;
+        $Singleboatgallery->Product_id = $products->id;
+        $Singleboatgallery->Photo = "$imageNameGallery";
+        $Singleboatgallery->lang = App()->getLocale();
+         //   $Singleboatgallery->img_tit = $photoexplode[0];
+        $Singleboatgallery->save();
+        }}
+
+
+
+
 
         Flash::success('Products saved successfully.');
 
@@ -93,6 +125,10 @@ class ProductsController extends AppBaseController
      */
     public function edit($id)
     {
+
+        $cat = Categories_Products::all();
+    
+
         $products = $this->productsRepository->findWithoutFail($id);
 
         if (empty($products)) {
@@ -101,7 +137,7 @@ class ProductsController extends AppBaseController
             return redirect(route('products.index'));
         }
 
-        return view('products.edit')->with('products', $products);
+        return view('products.edit')->with('products', $products)     ->with('cat', $cat);
     }
 
     /**
@@ -114,6 +150,18 @@ class ProductsController extends AppBaseController
      */
     public function update($id, UpdateProductsRequest $request)
     {
+        $input = $request->all();
+
+        $photoexplode = $request->single_photo->getClientOriginalName();
+        $photoexplode = explode(".", $photoexplode);
+        $namerand = rand();
+        $namerand.= $photoexplode[0];
+        $imageNameGallery = $namerand . '.' . $request->single_photo->getClientOriginalExtension();
+        $request->single_photo->move(base_path() . '/public/images/', $imageNameGallery);
+        $input['single_photo']=    $imageNameGallery;
+
+
+
         $products = $this->productsRepository->findWithoutFail($id);
 
         if (empty($products)) {
@@ -122,8 +170,29 @@ class ProductsController extends AppBaseController
             return redirect(route('products.index'));
         }
 
-        $products = $this->productsRepository->update($request->all(), $id);
+        $products = $this->productsRepository->update(   $input , $id);
 
+
+if($request->photos_id){ 
+
+        foreach($request->photos_id as $photo1)
+        {
+        $photoexplode = $photo1->getClientOriginalName();
+        $photoexplode = explode(".", $photoexplode);
+        $namerand = rand();
+        $namerand.= $photoexplode[0];
+        $imageNameGallery = $namerand . '.' . $photo1->getClientOriginalExtension();
+        $photo1->move(base_path() . '/public/images/', $imageNameGallery);
+        $Singleboatgallery = new ProductsPhotos;
+        $Singleboatgallery->Product_id = $products->id;
+        $Singleboatgallery->Photo = "$imageNameGallery";
+        $Singleboatgallery->lang = App()->getLocale();
+         //   $Singleboatgallery->img_tit = $photoexplode[0];
+        $Singleboatgallery->save();
+        }}
+
+
+        
         Flash::success('Products updated successfully.');
 
         return redirect(route('products.index'));

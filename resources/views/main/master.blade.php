@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+ 
+ 
 <title> {{ site_settings("Web site name")  }}    </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -35,17 +37,34 @@
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<nav>
 							<ul class="nav navbar-nav">
-								<li><a href="{{ URL::to('/')}}" class="active">الرئيسية </a></li>
-								<li><a href="{{ URL::to('/about')}}">عن الشركة </a></li>
-								<li><a href="{{ URL::to('/All_Product')}}">منتجاتنا </a></li>
-								<li><a href="{{ URL::to('/Categories')}}">تصنيفات </a></li>  
-								<li><a href="{{ URL::to('/contact')}}">الاتصال بنا </a></li>
+
+
+<?php if (App::isLocale('ar') =='ar' ) {   ?>
+
+								<li><a href="{{ URL::to('/')}}" class="active"> {{ trans('langsite.Home')}} </a></li>
+								<li><a href="{{ URL::to('/about')}}">  {{ trans('langsite.About')}}   </a></li>
+								<li><a href="{{ URL::to('/All_Product')}}">  {{ trans('langsite.Products')}}  </a></li>
+								<li><a href=" {{ URL::to('/Categories')}}">  {{ trans('langsite.Categories')}}  </a></li>  
+								<li><a href="{{ URL::to('/contact')}}"> {{ trans('langsite.Contact Us')}}  </a></li>
+
+<?php  } else{  ?>
+
+								<li><a href="{{ URL::to('/en')}}" class="active"> {{ trans('langsite.Home')}} </a></li>
+								<li><a href="{{ URL::to('/en/about')}}">  {{ trans('langsite.About')}}   </a></li>
+								<li><a href="{{ URL::to('/en/All_Product')}}">  {{ trans('langsite.Products')}}  </a></li>
+								<li><a href=" {{ URL::to('/en/Categories')}}">  {{ trans('langsite.Categories')}}  </a></li>  
+								<li><a href="{{ URL::to('/en/contact')}}"> {{ trans('langsite.Contact Us')}}  </a></li>
+
+	<?php  }  ?>
+
+
 								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">اللغة <b class="caret"></b></a>
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">  {{ trans('langsite.lang')}}  <b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><a href="{{ URL::to('/')}}">English</a></li>
+										<li><a href="{{ URL::to('/en')}}">English</a></li>
 										<li class="divider"></li>
 										<li><a href="{{ URL::to('/')}}">العربية </a></li>
+
 									</ul>
 								</li>
 							</ul>
@@ -71,7 +90,7 @@
 	<div class="container">
 		<div class="w3_agile_footer_grids">
 			<div class="col-sm-4 col-sm-offset-0 col-xs-9 col-xs-offset-2 w3_agile_footer_grid">
-				<h3>عن الشركة </h3>
+				<h3>   {{ trans('langsite.About')}}  </h3>
 				<div class="w3ls_footer_grid_left">
 					<p>  {{ site_settings("About Us")  }}  </p>
 					 
@@ -81,31 +100,60 @@
 			<div class="col-sm-4 col-sm-offset-0 col-xs-9 col-xs-offset-2 w3ls_address_mail_footer_grids w3_agile_footer_grid">
 				<h3>قوائم سريعة </h3>
 				<ul class="agileits_w3layouts_footer_grid_list">
+
+
+<?php if (App::isLocale('ar') =='ar' ) {   ?>
+
+
+
 					<li>
 						<span class="fa fa-angle-double-right" aria-hidden="true"></span>
-						<a href="{{ URL::to('/')}}">الرئيسية </a>
+						<a href="{{ URL::to('/')}}"> {{ trans('langsite.Home')}}  </a>
 					</li>
 					<li>
 						<span class="fa fa-angle-double-right" aria-hidden="true"></span>
-						<a href="{{ URL::to('/about')}}">عن الشركة </a>
+						<a href="{{ URL::to('/about')}}">   {{ trans('langsite.About')}}  </a>
 					</li>
-					<!-- <li>
+				  	<li>
 						<span class="fa fa-angle-double-right" aria-hidden="true"></span>
-						<a href="#services-fo">خدماتنا </a>
-					</li> -->
-					<li>
-						<span class="fa fa-angle-double-right" aria-hidden="true"></span>
-						<a href="{{ URL::to('/All_Product')}}">منتجاتنا </a>
+						<a href="{{ URL::to('/All_Product')}}"> {{ trans('langsite.Products')}}  </a>
 					</li>
 			        <li>
 						<span class="fa fa-angle-double-right" aria-hidden="true"></span>
-						<a href="{{ URL::to('/Categories')}}"> تصنيفات </a>
+						<a href="{{ URL::to('/Categories')}}">  {{ trans('langsite.Categories')}}  </a>
 					</li>
 
 					<li>
 						<span class="fa fa-angle-double-right" aria-hidden="true"></span>
-						<a href="{{ URL::to('/contact')}}">الاتصال بنا </a>
+						<a href="{{ URL::to('/contact')}}">   {{ trans('langsite.Contact Us')}}  </a>
 					</li>
+
+<?php  } else{  ?>
+
+	              <li>
+						<span class="fa fa-angle-double-right" aria-hidden="true"></span>
+						<a href="{{ URL::to('/en')}}"> {{ trans('langsite.Home')}}  </a>
+					</li>
+					<li>
+						<span class="fa fa-angle-double-right" aria-hidden="true"></span>
+						<a href="{{ URL::to('/en/about')}}">   {{ trans('langsite.About')}}  </a>
+					</li>
+				  	<li>
+						<span class="fa fa-angle-double-right" aria-hidden="true"></span>
+						<a href="{{ URL::to('/en/All_Product')}}"> {{ trans('langsite.Products')}}  </a>
+					</li>
+			        <li>
+						<span class="fa fa-angle-double-right" aria-hidden="true"></span>
+						<a href="{{ URL::to('/en/Categories')}}">  {{ trans('langsite.Categories')}}  </a>
+					</li>
+
+					<li>
+						<span class="fa fa-angle-double-right" aria-hidden="true"></span>
+						<a href="{{ URL::to('/en/contact')}}">   {{ trans('langsite.Contact Us')}}  </a>
+					</li>
+
+	<?php  }  ?>
+
 				</ul><br>
 			</div>
 			<div class="col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1 w3_agile_footer_grid">
@@ -114,8 +162,8 @@
 					<div class="w3l-icon">
 						<span class="fa fa-map-marker" aria-hidden="true"></span>
 					</div>
-					<p>مدينة السادات - المنطقة الصناعية الأولى
-						<span>امام بنك cib.</span>
+					<p> 
+						<span>  {{ site_settings("Location")  }}</span>
 					</p>
 										<p> {{ site_settings("working time")  }}  </p>
 
@@ -153,7 +201,7 @@
 			<div class="clearfix"> </div>
 		</div>
 		<div class="agileinfo_copyright">
-			<p>© 2018 فودا فود. جميع الحقوق محفوظة | تم التصميم والتطوير بواسطة <a href="#">Be4e.Marketing</a>
+			<p> {{ trans('langsite.copyright')}} <a href="#">Be4e.Marketing</a>
 			</p>
 		</div>
 	</div>

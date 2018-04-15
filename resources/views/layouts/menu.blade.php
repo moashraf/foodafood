@@ -8,7 +8,7 @@
 </li>
 
 <li class="{{ Request::is('siteStings*') ? 'active' : '' }}">
-    <a href="{!! route('siteStings.index') !!}"><i class="fa fa-edit"></i><span>Site Stings</span></a>
+    <a href="{!! route('siteStings.index') !!}"><i class="fa fa-edit"></i><span> site settings  </span></a>
 </li>
 
 <li class="{{ Request::is('sliders*') ? 'active' : '' }}">

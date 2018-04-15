@@ -3,7 +3,7 @@
 @section('content')
 <!-- innerpages_banner -->
 	<div class="innerpages_bannerco">
-		<h2>الاتصال بنـــا</h2>
+		<h2>    {{ trans('langsite.Contact Us')}}  </h2>
 	</div>
 <!-- //innerpages_banner -->
 
@@ -19,30 +19,34 @@
 										<div class="col-md-6">
 												<div class="form-group">
 														<label for="name">
-																الاسم:</label>
-														<input type="text" class="form-control" id="name" placeholder="أدخل الأسم ... " required="required" />
+														{{ trans('langsite.Name')}} :</label>
+														<input type="text" class="form-control" id="name"
+														 placeholder="{{ trans('langsite.Name')}}" required="required" />
 												</div>
 												<div class="form-group">
 														<label for="email">
-																البريد الالكتروني:</label>
-																<input type="email" class="form-control" id="email" placeholder="أدخل البريد الالكتروني ... " required="required" />
+														{{ trans('langsite.Email')}} :</label>
+																<input type="email" class="form-control" id="email" 
+																placeholder="{{ trans('langsite.Email')}}" required="required" />
 												</div>
 												<div class="form-group">
 														<label for="subject">
-																التليفون:</label>
-														<input type="tel" class="form-control" id="phone" placeholder="أدخل رقم الهاتف ... " required="required" />
+														{{ trans('langsite.Phone')}} :</label>
+														<input type="tel" class="form-control" id="phone" 
+														placeholder="{{ trans('langsite.Phone')}}" required="required" />
 												</div>
 										</div>
 										<div class="col-md-6 ">
 												<div class="form-group">
 														<label for="name">
-																الرسالة </label>
+														{{ trans('langsite.Message')}}  </label>
 														<textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
-																placeholder="أترك رسالتك ... "></textarea>
+																placeholder=" 	{{ trans('langsite.Message')}} "></textarea>
 												</div>
 										</div>
 										<div class="col-md-12">
-												<button type="submit" class="btn btn-success pull-left" id="btnContactUs">إرسال </button>
+												<button type="submit" class="btn btn-success pull-left" id="btnContactUs">
+													{{ trans('langsite.send')}}  </button>
 										</div>
 								</div>
 								</form>
@@ -52,22 +56,26 @@
 								<div class="w3l-icon">
 									<span class="fa fa-map-marker" aria-hidden="true"></span>
 								</div>
-								<p>مدينة السادات - المنطقة الصناعية الأولى
-									امام بنك cib.
-								</p>
+								<p> {{ site_settings("Location")  }}  </p>
 								<div class="clearfix"></div>
 							</div>
 							<div class="w3ls_footer_grid_left">
 								<div class="w3l-icon">
 									<span class="fa fa-phone" aria-hidden="true"></span>
 								</div>
-								<p> تليفون : 01100191600
-									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;01123175215</span>
-								</p>
+								<p>   {{ site_settings("phone")  }} </p>
+								<div class="clearfix"></div>
+
+								<div class="w3l-icon">
+									<span class="fa fa-envelope-o" aria-hidden="true"></span>
+								</div>
+								<p>  {{ site_settings("Mail")  }} </p>
+
+
 								<div class="clearfix"></div>
 							</div>
 							<div class="w3ls_footer_grid_left">
-								 <p>المواعيد من 09:00 ص الي 05:00 م كل يوم ماعدا الجمعة "أجازة"</p>
+								 <p> {{ site_settings("working time")  }}  </p>
 							</div>
 						</div>
 					</div>

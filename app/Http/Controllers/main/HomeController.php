@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
  use App\Models\Categories_Products;
  class HomeController extends Controller
 {
+
+    function __construct() { 
+        App()->setLocale('ar');
+
+   }
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +22,8 @@ use Illuminate\Http\Request;
      */
     public function index()
     {
-     $Categories_Products = Categories_Products::limit(6)->get();
-         $slider = slider::limit(8)->get();
+     $Categories_Products = Categories_Products::limit(6)->where('lang', 'ar') ->get();
+         $slider = slider::limit(8) ->where('lang', 'ar')  ->get();
         return view('main.index', 
             [
                  'Categories_Products' => $Categories_Products, 

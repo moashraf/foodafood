@@ -2,22 +2,21 @@
     <thead>
         <tr>
             <th>Title</th>
-        <th>Slug</th>
-        <th>Lang</th>
+         <th>Lang</th>
         <th>Single Photo</th>
-        <th>Body</th>
-            <th colspan="3">Action</th>
+             <th colspan="3">Action</th>
         </tr>
     </thead>
     <tbody>
     @foreach($categoriesProducts as $categoriesProducts)
         <tr>
             <td>{!! $categoriesProducts->title !!}</td>
-            <td>{!! $categoriesProducts->slug !!}</td>
-            <td>{!! $categoriesProducts->lang !!}</td>
-            <td>{!! $categoriesProducts->single_photo !!}</td>
-            <td>{!! $categoriesProducts->body !!}</td>
-            <td>
+             <td>{!! $categoriesProducts->lang !!}</td>
+ 
+                       <td>     <img src="{{ URL::to('/').'/images/'. $categoriesProducts->single_photo }}"  width="50" height="50">  </td>
+             <td>
+
+
                 {!! Form::open(['route' => ['categoriesProducts.destroy', $categoriesProducts->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
                     <a href="{!! route('categoriesProducts.show', [$categoriesProducts->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>

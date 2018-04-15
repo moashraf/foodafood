@@ -53,11 +53,11 @@ class Categories_Products extends Model
      * @var array
      */
     public static $rules = [
-        'title' => 'required',
-        'slug' => 'required',
-        'lang' => 'required',
-        'single_photo' => 'required',
-        'body' => 'required'
+        'title' => 'required|min:1',
+        'slug' => 'required|min:1',
+        'lang' => 'required|min:1',
+        'single_photo' => 'required|min:3|mimes:jpeg,jpg,png,gif',
+        'body' => 'required|min:1'
     ];
 
     

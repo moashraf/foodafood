@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-class CategoriesProductController extends Controller
+use App\Models\Categories_Products;
+ class CategoriesProductController extends Controller
 {
+
+     
+    function __construct() { 
+      //  App()->setLocale(App()->getLocale());
+
+   }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,13 +20,11 @@ class CategoriesProductController extends Controller
      */
     public function index()
     {
-  //        $References = Boats::limit(20)->get();
-      //  $flight = Sitesettings::limit(1)->get();
+        $Categories_Products = Categories_Products::where('lang', 'ar')->paginate(12);
+
         return view('main.Categories_Product', 
             [
-               // 'References' => $References, 
-               // 'getallnews' => $flight, 
-                //'slider' => $slider
+            'Categories_Products' => $Categories_Products
             ]);
     }
 

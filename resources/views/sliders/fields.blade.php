@@ -1,20 +1,23 @@
+<!-- Title Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('title', 'Title:') !!}
+    {!! Form::text('title', null, ['class' => 'form-control']) !!}
+</div>
+
+
 <!-- Lang Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('lang', 'Lang:') !!}
-    {!! Form::text('lang', null, ['class' => 'form-control']) !!}
+    {!! Form::label('lang', 'lang:') !!}
+    {!! Form::select('lang', ['en' => 'en', 'ar' => 'ar'], null, ['class' => 'form-control']) !!}
 </div>
+
+
+<div class="clearfix"></div>
 
 <!-- Single Photo Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('single_photo', 'Single Photo:') !!}
     {!! Form::file('single_photo') !!}
-</div>
-<div class="clearfix"></div>
-
-<!-- Title Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('title', 'Title:') !!}
-    {!! Form::text('title', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

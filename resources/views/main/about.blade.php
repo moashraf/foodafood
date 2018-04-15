@@ -2,7 +2,7 @@
 @section('content')
 <!-- innerpages_banner -->
 	<div class="innerpages_bannerco">
-		<h2>عن الشركــة </h2>
+		<h2> {{ trans('langsite.About')}} </h2>
 	</div>
 <!-- //innerpages_banner -->
 
@@ -15,9 +15,9 @@
 			</div>
 		</div>
 		<div class="col-md-6 welcome_left">
-			<h3 class="agileits-title">مرحبا 	"فودا فود "</h3>
-			<h4> مصنع بسكويت سوري متخصص في تصنيع البسكويت السادة والويفر والمغطس والسندوتش عالي الجودة </h4>
-			<p>مصنع بسكويت سوري متخصص في تصنيع البسكويت السادة والويفر والمغطس والسندوتش عالي الجودة . مصنع بسكويت سوري متخصص في تصنيع البسكويت السادة والويفر والمغطس والسندوتش عالي الجودة . مصنع بسكويت سوري متخصص في تصنيع البسكويت السادة والويفر والمغطس والسندوتش عالي الجودة .</p>
+			<h3 class="agileits-title"> {{ trans('langsite.Welcome') }}</h3>
+			<h4>  {{ site_settings("sub titles")  }}  </h4>
+			<p>   {{ site_settings("About Us")  }} </p>
 		</div>
 		<div class="clearfix"> </div>
 	</div>

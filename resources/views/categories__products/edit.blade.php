@@ -11,7 +11,7 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($categoriesProducts, ['route' => ['categoriesProducts.update', $categoriesProducts->id], 'method' => 'patch']) !!}
+                   {!! Form::model($categoriesProducts, ['route' => ['categoriesProducts.update', $categoriesProducts->id], 'method' => 'patch' ,'files' => true,'enctype' => 'multipart/form-data' ]) !!}
 
                         @include('categories__products.fields')
 

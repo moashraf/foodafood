@@ -3,43 +3,30 @@
 
 <!-- innerpages_banner -->
 	<div class="innerpages_banner">
-		<h2>تصنيفات</h2>
+		<h2> {{ trans('langsite.Categories')}}  </h2>
 	</div>
 <!-- //innerpages_banner -->
 
 <!-- Portfolio section -->
 <div class="popular_cakes">
 	<div class="container">
-		<h3 class="heading">فودا فود </h3>
-		<div class="cakes_grids">
+ 				<div class="cakes_grids">
+				@foreach($Categories_Products as $Categories_Products_val)
+		
 			<div class="col-sm-4">
 			<div class="cakes_grid1">
-				<a href="gallery.html" class="pop-ca">
-				<img class="img-responsive img-thumbnail" src="images/c1.jpg" alt="popular cakes" />
-				<h3>لافيرا</h3>
-				<p>لكل العيلة </p>
+				<a href="{{ URL::to('/').'/Categories/'.$Categories_Products_val->id }}" class="pop-ca">
+				<img class="img-responsive img-thumbnail" src="{{ URL::to('/').'/images/'.$Categories_Products_val->single_photo}}" alt="popular cakes" />
+				<h3>    {{$Categories_Products_val->title}}   </h3>
+				<p>    {{$Categories_Products_val->body}}   </p>
 			</a>
 			</div>
 		</div>
-			<div class="col-sm-4">
-			<div class="cakes_grid1">
-				<a href="gallery.html" class="pop-ca">
-				<img class="img-responsive img-thumbnail" src="images/c2.jpg" alt="popular cakes" />
-				<h3>سوبرانو </h3>
-				<p>بتظبط أي قعدة </p>
-				<a>
-			</div>
-		</div>
-			<div class="col-sm-4">
-			<div class="cakes_grid1">
-				<a href="gallery.html" class="pop-ca">
-				<img class="img-responsive img-thumbnail" src="images/c3.jpg" alt="popular cakes" />
-				<h3>فودا فود </h3>
-				<p>كبرت العيلة </p>
-			</a>
-			</div>
-			</div>
+		@endforeach
+			 
 			<div class="clearfix"></div>
+			<center>	{{ $Categories_Products->links() }}</center>	
+
 		</div>
 	</div>
 </div>

@@ -57,7 +57,7 @@ class siteStingsController extends AppBaseController
     {
         $input = $request->all();
 
-        $siteStings = $this->siteStingsRepository->create($input);
+      $siteStings = $this->siteStingsRepository->create($input);
 
         Flash::success('Site Stings saved successfully.');
 
@@ -113,7 +113,8 @@ class siteStingsController extends AppBaseController
      * @return Response
      */
     public function update($id, UpdatesiteStingsRequest $request)
-    {
+    {        $input = $request->all();
+
         $siteStings = $this->siteStingsRepository->findWithoutFail($id);
 
         if (empty($siteStings)) {
@@ -122,7 +123,7 @@ class siteStingsController extends AppBaseController
             return redirect(route('siteStings.index'));
         }
 
-        $siteStings = $this->siteStingsRepository->update($request->all(), $id);
+        $siteStings = $this->siteStingsRepository->update(   $input, $id);
 
         Flash::success('Site Stings updated successfully.');
 

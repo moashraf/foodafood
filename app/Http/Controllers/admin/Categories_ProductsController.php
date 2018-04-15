@@ -57,6 +57,15 @@ class Categories_ProductsController extends AppBaseController
     {
         $input = $request->all();
 
+        $photoexplode = $request->single_photo->getClientOriginalName();
+        $photoexplode = explode(".", $photoexplode);
+        $namerand = rand();
+        $namerand.= $photoexplode[0];
+        $imageNameGallery = $namerand . '.' . $request->single_photo->getClientOriginalExtension();
+        $request->single_photo->move(base_path() . '/public/images/', $imageNameGallery);
+        $input['single_photo']=    $imageNameGallery;
+
+
         $categoriesProducts = $this->categoriesProductsRepository->create($input);
 
         Flash::success('Categories  Products saved successfully.');
@@ -114,6 +123,19 @@ class Categories_ProductsController extends AppBaseController
      */
     public function update($id, UpdateCategories_ProductsRequest $request)
     {
+
+        $input = $request->all();
+
+        $photoexplode = $request->single_photo->getClientOriginalName();
+        $photoexplode = explode(".", $photoexplode);
+        $namerand = rand();
+        $namerand.= $photoexplode[0];
+        $imageNameGallery = $namerand . '.' . $request->single_photo->getClientOriginalExtension();
+        $request->single_photo->move(base_path() . '/public/images/', $imageNameGallery);
+        $input['single_photo']=    $imageNameGallery;
+
+
+
         $categoriesProducts = $this->categoriesProductsRepository->findWithoutFail($id);
 
         if (empty($categoriesProducts)) {
@@ -122,7 +144,7 @@ class Categories_ProductsController extends AppBaseController
             return redirect(route('categoriesProducts.index'));
         }
 
-        $categoriesProducts = $this->categoriesProductsRepository->update($request->all(), $id);
+        $categoriesProducts = $this->categoriesProductsRepository->update(   $input , $id);
 
         Flash::success('Categories  Products updated successfully.');
 

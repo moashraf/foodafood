@@ -12,8 +12,8 @@
 
 <!-- Lang Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('lang', 'Lang:') !!}
-    {!! Form::select('lang', ['value1' => 'value1', 'value2' => 'value2', 'value3' => 'value3'], null, ['class' => 'form-control']) !!}
+    {!! Form::label('lang', 'lang:') !!}
+    {!! Form::select('lang', ['en' => 'en', 'ar' => 'ar'], null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Single Photo Field -->

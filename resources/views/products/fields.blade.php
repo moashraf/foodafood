@@ -20,7 +20,8 @@
 <!-- Photos Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('photos_id', 'Photos Id:') !!}
-    {!! Form::file('photos_id') !!}
+    <input type="file"   name="photos_id[]" multiple    >
+    
 </div>
 <div class="clearfix"></div>
 
@@ -48,23 +49,29 @@
     {!! Form::text('Packing_content', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Cat Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('cat_id', 'Cat Id:') !!}
-    {!! Form::select('cat_id', ['value1' => 'value1', 'value2' => 'value2', 'value3' => 'value3'], null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Lang Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('lang', 'Lang:') !!}
-    {!! Form::select('lang', ['value1' => 'value1', 'value2' => 'value2', 'value3' => 'value3'], null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- Slug Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('slug', 'Slug:') !!}
     {!! Form::text('slug', null, ['class' => 'form-control']) !!}
 </div>
+
+
+ <div class="form-group col-sm-6">
+    {!! Form::label('lang', 'lang:') !!}
+    {!! Form::select('lang', ['en' => 'en', 'ar' => 'ar'], null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- cat_id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('cat_id', 'cat:') !!}
+    <select name="cat_id" class="form-control">
+        @foreach($cat as $category)
+            <option value="{{$category->id}}"> {{$category->title}} </option>
+        @endforeach
+    </select>
+
+ </div>
+
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

@@ -1,60 +1,45 @@
+
+
+
 @extends('main.master')
 @section('content')
 	<!-- banner slider -->
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1" class=""></li>
-			<li data-target="#myCarousel" data-slide-to="2" class=""></li>
-		</ol>
-		<div class="carousel-inner" role="listbox">
+<div class="container-fluid">
+ <div id="myCarousel" class="carousel slide" data-ride="carousel">
+   <!-- Indicators -->
+   <ol class="carousel-indicators">
+  @foreach($slider as $sliderval)
+   
+     <li data-target="#myCarousel" data-slide-to=" <?php  if($loop->iteration){echo $loop->iteration ;}    ?>" class="<?php  if($loop->iteration==1){echo 'active';}    ?>"></li>
+   
+	 @endforeach
+	 
+   </ol>
 
-
-
+   <!-- Wrapper for slides -->
+   <div class="carousel-inner">
+   
   @foreach($slider as $sliderval)
 
-			<div class="item  " 
-			style="background: linear-gradient(rgba(23, 22, 23, 0), rgba(23, 22, 23, 0)), url({{   URL::to('/').'/images/'.$sliderval->single_photo }}) no-repeat;">
-				<div class="container">
-					 <div class="carousel-caption">
-						<div class="col-md-6 slider_left">
-						 						</div>
-						<div class="col-md-6 slider_right">
- 						</div>
-						<div class="clearfix"></div>
-					</div>
-				</div>
-			</div>
-			 
-		     @endforeach
+     <div class="item  <?php  if($loop->iteration==1){echo 'active';}    ?> ">
+       <img src="{{   URL::to('/').'/images/'.$sliderval->single_photo }}" alt="Los Angeles" style="width:100%;">
+     </div>
 
-		     <div class="item active" 
-			style="background: linear-gradient(rgba(23, 22, 23, 0), rgba(23, 22, 23, 0)), url({{   URL::to('/').'/images/'.$sliderval->single_photo }}) no-repeat;">
-				<div class="container">
-					 <div class="carousel-caption">
-						<div class="col-md-6 slider_left">
-						 						</div>
-						<div class="col-md-6 slider_right">
- 						</div>
-						<div class="clearfix"></div>
-					</div>
-				</div>
-			</div>
+    		     @endforeach
 
+   </div>
 
-		</div>
-		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-			<span class="fa fa-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-			<span class="fa fa-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
-		<!-- The Modal -->
-	</div>
-	<!-- //banner slider -->
+   <!-- Left and right controls -->
+   <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+     <span class="glyphicon glyphicon-chevron-left"></span>
+     <span class="sr-only">Previous</span>
+   </a>
+   <a class="right carousel-control" href="#myCarousel" data-slide="next">
+     <span class="glyphicon glyphicon-chevron-right"></span>
+     <span class="sr-only">Next</span>
+   </a>
+ </div>
+</div>
 
 <!-- welcome -->
 <div class="welcome">
@@ -65,7 +50,7 @@
 			</div>
 		</div>
 		<div class="col-md-6 welcome_left">
-			<h3 class="agileits-title">مرحبا 	"فودا فود "</h3>
+			<h3 class="agileits-title"> 	{{ trans('langsite.Welcome')}} </h3>
 			<h4> {{ site_settings("sub titles")  }}  </h4>
 			<p> {{ site_settings("About Us")  }}  </p>
 		</div>
@@ -77,7 +62,7 @@
 <!-- Popular cakes -->
 <div class="popular_cakes">
 	<div class="container">
-		<h3 class="heading"> تصنيفات فودا فود </h3>
+		<h3 class="heading">   {{ trans('langsite.Categories')}} </h3>
 		<div class="cakes_grids">
 			  @foreach($Categories_Products as $Categories_Productsval)
 			 
@@ -100,3 +85,4 @@
 <br><br>
 
 @endsection
+

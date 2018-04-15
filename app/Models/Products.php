@@ -36,7 +36,7 @@ class Products extends Model
         'name',
         'body',
         'single_photo',
-        'photos_id',
+       // 'photos_id',
         'component',
         'Net_weight',
         'Note',
@@ -55,7 +55,7 @@ class Products extends Model
         'name' => 'string',
         'body' => 'string',
         'single_photo' => 'string',
-        'photos_id' => 'integer',
+     //   'photos_id' => 'integer',
         'component' => 'string',
         'Net_weight' => 'string',
         'Note' => 'string',
@@ -71,18 +71,31 @@ class Products extends Model
      * @var array
      */
     public static $rules = [
-        'name' => 'required',
-        'body' => 'required',
-        'single_photo' => 'required',
-        'photos_id' => 'numeric',
-        'component' => 'required',
-        'Net_weight' => 'required',
-        'Note' => 'required',
-        'Packing_content' => 'required',
-        'cat_id' => 'required',
-        'lang' => 'required',
-        'slug' => 'required'
+        'name' => 'required|min:1',
+        'body' => 'required|min:1',
+        'single_photo' => 'required|min:1|mimes:jpeg,jpg,png,gif',
+   //     'photos_id' => 'numeric',
+        'component' => 'required|min:1',
+        'Net_weight' => 'required|min:1',
+        'Note' => 'required|min:1',
+        'Packing_content' => 'required|min:1',
+        'cat_id' => 'required|min:1',
+        'lang' => 'required|min:1',
+        'slug' => 'required|min:1'
     ];
+
+
+    public function get_Product_Photos()
+    {
+        return $this->hasMany('App\Models\ProductsPhotos', 'Product_id');
+
+    }
+    public function get_cat_data()
+{
+	 return $this->hasOne('App\Models\Categories_Products','id','cat_id');
+}
+
+
 
     
 }

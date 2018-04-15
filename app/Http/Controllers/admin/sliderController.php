@@ -57,6 +57,14 @@ class sliderController extends AppBaseController
     {
         $input = $request->all();
 
+        $photoexplode = $request->single_photo->getClientOriginalName();
+        $photoexplode = explode(".", $photoexplode);
+        $namerand = rand();
+        $namerand.= $photoexplode[0];
+        $imageNameGallery = $namerand . '.' . $request->single_photo->getClientOriginalExtension();
+        $request->single_photo->move(base_path() . '/public/images/', $imageNameGallery);
+        $input['single_photo']=    $imageNameGallery;
+
         $slider = $this->sliderRepository->create($input);
 
         Flash::success('Slider saved successfully.');
@@ -114,6 +122,16 @@ class sliderController extends AppBaseController
      */
     public function update($id, UpdatesliderRequest $request)
     {
+        $input = $request->all();
+
+        $photoexplode = $request->single_photo->getClientOriginalName();
+        $photoexplode = explode(".", $photoexplode);
+        $namerand = rand();
+        $namerand.= $photoexplode[0];
+        $imageNameGallery = $namerand . '.' . $request->single_photo->getClientOriginalExtension();
+        $request->single_photo->move(base_path() . '/public/images/', $imageNameGallery);
+        $input['single_photo']=    $imageNameGallery;
+
         $slider = $this->sliderRepository->findWithoutFail($id);
 
         if (empty($slider)) {
@@ -122,7 +140,7 @@ class sliderController extends AppBaseController
             return redirect(route('sliders.index'));
         }
 
-        $slider = $this->sliderRepository->update($request->all(), $id);
+        $slider = $this->sliderRepository->update(    $input, $id);
 
         Flash::success('Slider updated successfully.');
 
