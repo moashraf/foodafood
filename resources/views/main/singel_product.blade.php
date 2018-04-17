@@ -3,69 +3,68 @@
 
 <!-- innerpages_banner -->
 	<div class="innerpages_banner">
-		<h2>تفاصيل المنتج </h2>
+		<h2>   {{   $Products->name }}  </h2>
 	</div>
 <!-- //innerpages_banner -->
 
 <!-- Portfolio section -->
 <section class="portfolio-agileinfo gallery00000" id="portfolio">
 			<br><br>
-			 
+
 			 <div class="container">
-				
+
 				<div class="row">
-					<div class="col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+					<div class="col-sm-12  col-xs-12 col-xs-offset-0">
 								<div class="panel with-nav-tabs panel-warning">
 										<div class="panel-body">
 												<div class="tab-content">
-														<div class="tab-pane fade active in" id="tab1warning"><img src="images/g1.png" class="img-responsive"></div>
-														<div class="tab-pane fade" id="tab2warning"><img src="images/g2.png" class="img-responsive"></div>
-														<div class="tab-pane fade" id="tab3warning"><img src="images/g3.png" class="img-responsive"></div>
-														<div class="tab-pane fade" id="tab4warning"><img src="images/g4.png" class="img-responsive"></div>
+ <div class="tab-pane fade active in" id="tab0">
+ <img src="{{ URL::to('/').'/images/'. $Products->single_photo }}" class="img-responsive"></div>
+  	@foreach($Products->get_Product_Photos as $products_val)
+ 								<div class="tab-pane fade" id="<?php if ($loop->iteration) {echo 'tab' . $loop->iteration;}?>">
+								 <img src="{{ URL::to('/').'/images/'. $products_val->Photo }}" class="img-responsive"></div>
+								 	@endforeach
 												</div>
 										</div>
 				 <div class="panel-heading">
 					 <div class='col-xs-12'>
+
+<?php if (!$Products->get_Product_Photos->isEmpty()) {?>
+
 			 <div class="carousel slide media-carousel nav nav-tabs" id="media">
 				 <div class="carousel-inner">
 					 <div class="item  active">
 						 <div class="row">
-							 <div class="col-md-3 col-xs-6">
-								 <a class="thumbnail" href="#tab1warning" data-toggle="tab"><img src="images/g1.png" class="img-responsive"></a>
-							 </div>
-							 <div class="col-md-3 col-xs-6">
-								 <a class="thumbnail" href="#tab2warning" data-toggle="tab"><img src="images/g2.png" class="img-responsive"></a>
-							 </div>
-							 <div class="col-md-3 col-xs-6">
-								 <a class="thumbnail" href="#tab3warning" data-toggle="tab"><img src="images/g3.png" class="img-responsive"></a>
-							 </div>
-							 <div class="col-md-3 col-xs-6">
-								<a class="thumbnail" href="#tab4warning" data-toggle="tab"><img src="images/g4.png" class="img-responsive"></a>
+
+						 @foreach($Products->get_Product_Photos as $products_val)
+						 <div class="col-md-2 col-xs-6">
+
+								<a class="thumbnail" href="#<?php if ($loop->iteration) {echo 'tab' . $loop->iteration;}?>" data-toggle="tab">
+								<img src="{{ URL::to('/').'/images/'. $products_val->Photo }}" class="img-responsive"></a>
 							</div>
+
+
+								 	@endforeach
+
 						 </div>
 					 </div>
-					 <div class="item">
-						 <div class="row">
-							 <div class="col-md-3 col-xs-6">
-								 <a class="thumbnail" href="#tab1warning" data-toggle="tab"><img src="images/g1.png" class="img-responsive"></a>
-							 </div>
-							 <div class="col-md-3 col-xs-6">
-								 <a class="thumbnail" href="#tab2warning" data-toggle="tab"><img src="images/g2.png" class="img-responsive"></a>
-							 </div>
-							 <div class="col-md-3 col-xs-6">
-								 <a class="thumbnail" href="#tab3warning" data-toggle="tab"><img src="images/g3.png" class="img-responsive"></a>
-							 </div>
-							 <div class="col-md-3 col-xs-6">
-								<a class="thumbnail" href="#tab4warning" data-toggle="tab"><img src="images/g4.png" class="img-responsive"></a>
-							</div>
-						 </div>
-					 </div>
+
 				 </div>
 				 <a data-slide="prev" href="#media" class="right carousel-control">‹</a>
 				 <a data-slide="next" href="#media" class="left carousel-control">›</a>
 			 </div>
+
+<?php } else {?>
+<h2 style="    padding: 58px;" > <center>     {{ trans('langsite.not found')}}   </center>  </h2>
+
+<?php }?>
+
+
+
+
+
 			</div>
-													 
+
 										</div>
 								</div>
 
@@ -73,13 +72,13 @@
 
 	 <div class="singel_product">
 					<div class="col-md-12">
-					<p><span>المكونات: </span>الطحينة والسكر والجلوكوز وحمض الستريك والفانيلا والفستق.</p>
-					<p><span>محتوي التعبئة : </span>ناؤمننتالاان</p>
-					<p>صافي الوزن 750 جم </p>
-					<p>الإجمالي وزن 795 جم </p>
-					<br><br>
-					<p class="no">ملاحظة: يحفظ بعيدا عن ضوء الشمس والرطوبة.</p>
-					<br><br>
+					<p><span>  {{ trans('langsite.details')}}  : </span>  {{   $Products->body }} </p>
+					<p><span>  {{ trans('langsite.Components')}} : </span> {{   $Products->component }} </p>
+					<p><span>    {{ trans('langsite.Packing')}}  : </span>  {{   $Products->Packing_content }} </p>
+ 					<p><span>     {{ trans('langsite.Net weight')}}    : </span>  {{   $Products->Net_weight }} </p>
+ 					<br><br>
+					<p><span>   {{ trans('langsite.Note')}}   : </span>  {{   $Products->Note }} </p>
+					  					<br><br><br>
 					</div>
 				</div>
 
@@ -88,8 +87,8 @@
 						</div>
 
 			</div>
-			
-			
+
+
 </div>
 <script>
 $(document).ready(function() {
@@ -98,7 +97,7 @@ $(document).ready(function() {
 	 interval: false,
  });
 });
- 
+
 </script>
 </section>
 <!-- /Portfolio section -->

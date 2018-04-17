@@ -57,13 +57,23 @@ class Categories_ProductsController extends AppBaseController
     {
         $input = $request->all();
 
-        $photoexplode = $request->single_photo->getClientOriginalName();
-        $photoexplode = explode(".", $photoexplode);
-        $namerand = rand();
-        $namerand.= $photoexplode[0];
-        $imageNameGallery = $namerand . '.' . $request->single_photo->getClientOriginalExtension();
-        $request->single_photo->move(base_path() . '/public/images/', $imageNameGallery);
-        $input['single_photo']=    $imageNameGallery;
+        if (!empty($input['single_photo'])) {
+            $photoexplode = $request->single_photo->getClientOriginalName();
+            $photoexplode = explode(".", $photoexplode);
+            $namerand = rand();
+            $namerand.= $photoexplode[0];
+            $imageNameGallery = $namerand . '.' . $request->single_photo->getClientOriginalExtension();
+            $request->single_photo->move(base_path() . '/public/images/', $imageNameGallery);
+            $input['single_photo']=    $imageNameGallery;
+      
+       
+       }else{
+       $input['single_photo']=    'logo.png'; 
+           
+       }
+
+
+        
 
 
         $categoriesProducts = $this->categoriesProductsRepository->create($input);
@@ -126,13 +136,17 @@ class Categories_ProductsController extends AppBaseController
 
         $input = $request->all();
 
-        $photoexplode = $request->single_photo->getClientOriginalName();
-        $photoexplode = explode(".", $photoexplode);
-        $namerand = rand();
-        $namerand.= $photoexplode[0];
-        $imageNameGallery = $namerand . '.' . $request->single_photo->getClientOriginalExtension();
-        $request->single_photo->move(base_path() . '/public/images/', $imageNameGallery);
-        $input['single_photo']=    $imageNameGallery;
+    
+
+        if (!empty($input['single_photo'])) {
+            $photoexplode = $request->single_photo->getClientOriginalName();
+            $photoexplode = explode(".", $photoexplode);
+            $namerand = rand();
+            $namerand.= $photoexplode[0];
+            $imageNameGallery = $namerand . '.' . $request->single_photo->getClientOriginalExtension();
+            $request->single_photo->move(base_path() . '/public/images/', $imageNameGallery);
+            $input['single_photo']=    $imageNameGallery;
+       } 
 
 
 

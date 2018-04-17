@@ -9,10 +9,16 @@
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href=" {{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" /><!-- bootstrap css -->
-<link href=" {{ asset('css/gallery.css') }} " rel="stylesheet" type="text/css" media="all" /><!-- gallery css -->
-<link href=" {{ asset('css/style.css') }} " rel="stylesheet" type="text/css" media="all" />
+
 <link href=" {{ asset('css/jQuery.lightninBox.css') }} " rel="stylesheet" type="text/css" media="all" /><!-- for gallery lightninBox css -->
 <link href=" {{ asset('css/font-awesome.css') }} " rel="stylesheet"><!-- fontawesome css -->
+<?php if (App::isLocale('en')) { ?>
+ <link rel='stylesheet' href="{{ asset('css/gallery-en.css') }}" > 
+ <link rel='stylesheet' href="{{ asset('css/style-en.css') }}" > 
+ <?php }else{   ?>
+<link href=" {{ asset('css/gallery.css') }} " rel="stylesheet" type="text/css" media="all" /><!-- gallery css -->
+ <link href=" {{ asset('css/style.css') }} " rel="stylesheet" type="text/css" media="all" />
+ <?php  }   ?>
 
 </head>
 <body>
@@ -41,19 +47,19 @@
 
 <?php if (App::isLocale('ar') =='ar' ) {   ?>
 
-								<li><a href="{{ URL::to('/')}}" class="active"> {{ trans('langsite.Home')}} </a></li>
-								<li><a href="{{ URL::to('/about')}}">  {{ trans('langsite.About')}}   </a></li>
-								<li><a href="{{ URL::to('/All_Product')}}">  {{ trans('langsite.Products')}}  </a></li>
-								<li><a href=" {{ URL::to('/Categories')}}">  {{ trans('langsite.Categories')}}  </a></li>  
-								<li><a href="{{ URL::to('/contact')}}"> {{ trans('langsite.Contact Us')}}  </a></li>
+								<li><a href="{{ URL::to('/')}}" class="<?php if (Request::segment(1) ==NULL ) { echo'active';} ?>"> {{ trans('langsite.Home')}} </a></li>
+								<li><a href="{{ URL::to('/about')}}" class="<?php if (Request::segment(1) =='about') { echo'active';} ?>"  >  {{ trans('langsite.About')}}   </a></li>
+								<li><a href="{{ URL::to('/All_Product')}}"  class="<?php if (Request::segment(1) =='All_Product') { echo'active';} ?>"  >  {{ trans('langsite.Products')}}  </a></li>
+								<li><a href=" {{ URL::to('/Categories')}}" class="<?php if (Request::segment(1) =='Categories') { echo'active';} ?>"  >  {{ trans('langsite.Categories')}}  </a></li>  
+								<li><a href="{{ URL::to('/contact')}}" class="<?php if (Request::segment(1) =='contact') { echo'active';} ?>"  > {{ trans('langsite.Contact Us')}}  </a></li>
 
 <?php  } else{  ?>
 
-								<li><a href="{{ URL::to('/en')}}" class="active"> {{ trans('langsite.Home')}} </a></li>
-								<li><a href="{{ URL::to('/en/about')}}">  {{ trans('langsite.About')}}   </a></li>
-								<li><a href="{{ URL::to('/en/All_Product')}}">  {{ trans('langsite.Products')}}  </a></li>
-								<li><a href=" {{ URL::to('/en/Categories')}}">  {{ trans('langsite.Categories')}}  </a></li>  
-								<li><a href="{{ URL::to('/en/contact')}}"> {{ trans('langsite.Contact Us')}}  </a></li>
+								<li><a href="{{ URL::to('/en')}}" class="<?php if (Request::segment(2) ==NULL ) { echo'active';} ?>"   > {{ trans('langsite.Home')}} </a></li>
+								<li><a href="{{ URL::to('/en/about')}}" class="<?php if (Request::segment(2) =='about') { echo'active';} ?>"  >  {{ trans('langsite.About')}}   </a></li>
+								<li><a href="{{ URL::to('/en/All_Product')}}" class="<?php if (Request::segment(2) =='All_Product') { echo'active';} ?>"  >  {{ trans('langsite.Products')}}  </a></li>
+								<li><a href=" {{ URL::to('/en/Categories')}}" class="<?php if (Request::segment(2) =='Categories') { echo'active';} ?>"  >  {{ trans('langsite.Categories')}}  </a></li>  
+								<li><a href="{{ URL::to('/en/contact')}}" class="<?php if (Request::segment(2) =='contact') { echo'active';} ?>"  > {{ trans('langsite.Contact Us')}}  </a></li>
 
 	<?php  }  ?>
 

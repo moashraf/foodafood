@@ -14,7 +14,7 @@ use App\Models\Categories_Products;
 use App\Models\ProductsPhotos;
 
 class ProductsController extends AppBaseController
-{
+{ 
     /** @var  ProductsRepository */
     private $productsRepository;
 
@@ -22,6 +22,21 @@ class ProductsController extends AppBaseController
     {
         $this->productsRepository = $productsRepo;
     }
+
+
+    public function ajax_del_products($id,$Product_id)
+    {
+         $Products = ProductsPhotos::where('id',$id)->where('Product_id',$Product_id)->first();
+        
+         if (empty($Products)) {
+            return back();
+        }
+
+        $Products->delete($id);
+        return back();
+    }
+
+
 
     /**
      * Display a listing of the Products.
@@ -59,13 +74,23 @@ class ProductsController extends AppBaseController
     public function store(CreateProductsRequest $request)
     {
         $input = $request->all();
-        $photoexplode = $request->single_photo->getClientOriginalName();
-        $photoexplode = explode(".", $photoexplode);
-        $namerand = rand();
-        $namerand.= $photoexplode[0];
-        $imageNameGallery = $namerand . '.' . $request->single_photo->getClientOriginalExtension();
-        $request->single_photo->move(base_path() . '/public/images/', $imageNameGallery);
-        $input['single_photo']=    $imageNameGallery;
+        if (!empty($input['single_photo'])) {
+            $photoexplode = $request->single_photo->getClientOriginalName();
+       $photoexplode = explode(".", $photoexplode);
+       $namerand = rand();
+       $namerand.= $photoexplode[0];
+       $imageNameGallery = $namerand . '.' . $request->single_photo->getClientOriginalExtension();
+       $request->single_photo->move(base_path() . '/public/images/', $imageNameGallery);
+       $input['single_photo']=    $imageNameGallery; 
+      
+       
+       }else{
+       $input['single_photo']=    'logo.png'; 
+           
+       }
+
+
+
         $products = $this->productsRepository->create($input);
 
         if($request->photos_id){ 
@@ -150,16 +175,26 @@ class ProductsController extends AppBaseController
      */
     public function update($id, UpdateProductsRequest $request)
     {
+        
+        
+
+ $products = $this->productsRepository->findWithoutFail($id);
+
+      
         $input = $request->all();
 
-        $photoexplode = $request->single_photo->getClientOriginalName();
+       
+        if (!empty($input['single_photo'])) {
+             $photoexplode = $request->single_photo->getClientOriginalName();
         $photoexplode = explode(".", $photoexplode);
         $namerand = rand();
         $namerand.= $photoexplode[0];
         $imageNameGallery = $namerand . '.' . $request->single_photo->getClientOriginalExtension();
         $request->single_photo->move(base_path() . '/public/images/', $imageNameGallery);
-        $input['single_photo']=    $imageNameGallery;
-
+        $input['single_photo']=    $imageNameGallery; 
+       
+        
+        } 
 
 
         $products = $this->productsRepository->findWithoutFail($id);

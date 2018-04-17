@@ -48,7 +48,7 @@ class slider extends Model
      */
     public static $rules = [
         'lang' => 'required',
-        'single_photo' => 'required',
+        'single_photo' => 'min:1|mimes:jpeg,jpg,png,gif',
         'title' => 'required'
     ];
 

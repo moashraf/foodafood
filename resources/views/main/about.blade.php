@@ -11,7 +11,7 @@
 	<div class="container">
 		<div class="col-md-6 welcome-w3lright">
 			<div class="video-grid-single-page-agileits">
-				  <img src="images/about.png" alt="" class="img-responsive" />  
+				  <img src="{{ URL::to('/')}}/images/about.png" alt="" class="img-responsive" />  
 			</div>
 		</div>
 		<div class="col-md-6 welcome_left">

@@ -11,7 +11,7 @@ class ProductController extends Controller
 
 
     function __construct() { 
-//App()->setLocale(App()->getLocale());
+        App()->setLocale('ar');
 
    }
 
@@ -61,9 +61,19 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
+            {
+                $Products = Products::where('lang', 'ar')->where('id', $id)->first();
+                if (!is_null($Products)) {
+                    return view('main.singel_product',
+                        [
+                            'Products' => $Products,
+                        ]);
+                } else {
+                    return redirect('/');
+
+                }
+
+            }
 
     /**
      * Show the form for editing the specified resource.

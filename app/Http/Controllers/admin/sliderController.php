@@ -15,7 +15,7 @@ class sliderController extends AppBaseController
 {
     /** @var  sliderRepository */
     private $sliderRepository;
-
+ 
     public function __construct(sliderRepository $sliderRepo)
     {
         $this->sliderRepository = $sliderRepo;
@@ -57,13 +57,26 @@ class sliderController extends AppBaseController
     {
         $input = $request->all();
 
-        $photoexplode = $request->single_photo->getClientOriginalName();
-        $photoexplode = explode(".", $photoexplode);
-        $namerand = rand();
-        $namerand.= $photoexplode[0];
-        $imageNameGallery = $namerand . '.' . $request->single_photo->getClientOriginalExtension();
-        $request->single_photo->move(base_path() . '/public/images/', $imageNameGallery);
-        $input['single_photo']=    $imageNameGallery;
+        
+
+
+
+
+        if (!empty($input['single_photo'])) {
+            $photoexplode = $request->single_photo->getClientOriginalName();
+            $photoexplode = explode(".", $photoexplode);
+            $namerand = rand();
+            $namerand.= $photoexplode[0];
+            $imageNameGallery = $namerand . '.' . $request->single_photo->getClientOriginalExtension();
+            $request->single_photo->move(base_path() . '/public/images/', $imageNameGallery);
+            $input['single_photo']=    $imageNameGallery;
+       }else{
+       $input['single_photo']=    'logo.png'; 
+           
+       }
+
+
+
 
         $slider = $this->sliderRepository->create($input);
 
@@ -123,16 +136,17 @@ class sliderController extends AppBaseController
     public function update($id, UpdatesliderRequest $request)
     {
         $input = $request->all();
-
-        $photoexplode = $request->single_photo->getClientOriginalName();
-        $photoexplode = explode(".", $photoexplode);
-        $namerand = rand();
-        $namerand.= $photoexplode[0];
-        $imageNameGallery = $namerand . '.' . $request->single_photo->getClientOriginalExtension();
-        $request->single_photo->move(base_path() . '/public/images/', $imageNameGallery);
-        $input['single_photo']=    $imageNameGallery;
-
         $slider = $this->sliderRepository->findWithoutFail($id);
+    if (!empty($input['single_photo'])) {
+            $photoexplode = $request->single_photo->getClientOriginalName();
+            $photoexplode = explode(".", $photoexplode);
+            $namerand = rand();
+            $namerand.= $photoexplode[0];
+            $imageNameGallery = $namerand . '.' . $request->single_photo->getClientOriginalExtension();
+            $request->single_photo->move(base_path() . '/public/images/', $imageNameGallery);
+            $input['single_photo']=    $imageNameGallery;
+       } 
+
 
         if (empty($slider)) {
             Flash::error('Slider not found');

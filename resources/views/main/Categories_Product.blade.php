@@ -15,7 +15,11 @@
 		
 			<div class="col-sm-4">
 			<div class="cakes_grid1">
-				<a href="{{ URL::to('/').'/Categories/'.$Categories_Products_val->id }}" class="pop-ca">
+				<a href="  <?php 
+			if (App::isLocale('ar'))   {
+				echo  URL::to('/').'/All_Product/' ;
+				 }else{
+				   echo  URL::to('/').'/en/All_Product/' ;  }  ?>" class="pop-ca">
 				<img class="img-responsive img-thumbnail" src="{{ URL::to('/').'/images/'.$Categories_Products_val->single_photo}}" alt="popular cakes" />
 				<h3>    {{$Categories_Products_val->title}}   </h3>
 				<p>    {{$Categories_Products_val->body}}   </p>

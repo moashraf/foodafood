@@ -13,43 +13,45 @@
 					<div class="contact-content">
 					 <div class="row">
 						<div class="col-md-7 content1">
-							<form>
-								<div class="row">
+			<form  action="{{ URL::to('/sendmail')  }}" method="post" >
+			{{ csrf_field() }}
 
-										<div class="col-md-6">
-												<div class="form-group">
-														<label for="name">
-														{{ trans('langsite.Name')}} :</label>
-														<input type="text" class="form-control" id="name"
-														 placeholder="{{ trans('langsite.Name')}}" required="required" />
-												</div>
-												<div class="form-group">
-														<label for="email">
-														{{ trans('langsite.Email')}} :</label>
-																<input type="email" class="form-control" id="email" 
-																placeholder="{{ trans('langsite.Email')}}" required="required" />
-												</div>
-												<div class="form-group">
-														<label for="subject">
-														{{ trans('langsite.Phone')}} :</label>
-														<input type="tel" class="form-control" id="phone" 
-														placeholder="{{ trans('langsite.Phone')}}" required="required" />
-												</div>
-										</div>
-										<div class="col-md-6 ">
-												<div class="form-group">
-														<label for="name">
-														{{ trans('langsite.Message')}}  </label>
-														<textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
-																placeholder=" 	{{ trans('langsite.Message')}} "></textarea>
-												</div>
-										</div>
-										<div class="col-md-12">
-												<button type="submit" class="btn btn-success pull-left" id="btnContactUs">
-													{{ trans('langsite.send')}}  </button>
-										</div>
+				<div class="row">
+
+						<div class="col-md-6">
+								<div class="form-group">
+										<label for="name">
+										{{ trans('langsite.Name')}} :</label>
+										<input type="text" class="form-control" id="name" name="name"
+											placeholder="{{ trans('langsite.Name')}}" required="required" />
 								</div>
-								</form>
+								<div class="form-group">
+										<label for="email">
+										{{ trans('langsite.Email')}} :</label>
+												<input type="email" class="form-control" id="email"  name="email"
+												placeholder="{{ trans('langsite.Email')}}" required="required" />
+								</div>
+								<div class="form-group">
+										<label for="subject">
+										{{ trans('langsite.Phone')}} :</label>
+										<input type="tel" class="form-control" id="phone" name="phone"
+										placeholder="{{ trans('langsite.Phone')}}" required="required" />
+								</div>
+						</div>
+						<div class="col-md-6 ">
+								<div class="form-group">
+										<label for="name">
+										{{ trans('langsite.Message')}}  </label>
+										<textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
+												placeholder=" 	{{ trans('langsite.Message')}} "></textarea>
+								</div>
+						</div>
+						<div class="col-md-12">
+								<button type="submit" class="btn btn-success pull-left" id="btnContactUs">
+									{{ trans('langsite.send')}}  </button>
+						</div>
+				</div>
+				</form>
 						</div>
 						<div class="col-md-5 content2">
 							<div class="w3ls_footer_grid_left">

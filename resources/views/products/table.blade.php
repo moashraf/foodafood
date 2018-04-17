@@ -16,7 +16,10 @@
               <td>     <img src="{{ URL::to('/').'/images/'. $products->single_photo }}"  width="50" height="50">  </td>
               <td>
             @foreach($products->get_Product_Photos as $products_val)
-             <img src="{{ URL::to('/').'/images/'. $products_val->Photo }}"  width="50" height="50"> 
+            <a href="{{ URL::to('/').'/admin/ajax_del_products/'.$products_val->id.'/'.$products_val->Product_id}}"  
+             class="  btn-xs"  >
+            <i class="glyphicon glyphicon-trash"></i></a>
+             <img id="Photo{{ $products_val->id }}/{{ $products_val->Product_id }}" src="{{ URL::to('/').'/images/'. $products_val->Photo }}"  width="50" height="50"> 
             @endforeach
             </td>
             

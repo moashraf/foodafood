@@ -73,7 +73,7 @@ class Products extends Model
     public static $rules = [
         'name' => 'required|min:1',
         'body' => 'required|min:1',
-        'single_photo' => 'required|min:1|mimes:jpeg,jpg,png,gif',
+        'single_photo' => 'min:1|mimes:jpeg,jpg,png,gif',
    //     'photos_id' => 'numeric',
         'component' => 'required|min:1',
         'Net_weight' => 'required|min:1',

@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories_Products;
+use App\Models\slider;
 use Illuminate\Http\Request;
- use App\Models\slider;
- use App\Models\Categories_Products;
- class HomeController extends Controller
+
+class HomeController extends Controller
 {
 
-    function __construct() { 
+    public function __construct()
+    {
         App()->setLocale('ar');
 
-   }
-
-
+    }
 
     /**
      * Display a listing of the resource.
@@ -22,12 +22,12 @@ use Illuminate\Http\Request;
      */
     public function index()
     {
-     $Categories_Products = Categories_Products::limit(6)->where('lang', 'ar') ->get();
-         $slider = slider::limit(8) ->where('lang', 'ar')  ->get();
-        return view('main.index', 
+        $Categories_Products = Categories_Products::limit(6)->where('lang', 'ar')->get();
+        $slider = slider::limit(8)->where('lang', 'ar')->get();
+        return view('main.index',
             [
-                 'Categories_Products' => $Categories_Products, 
-                'slider' => $slider
+                'Categories_Products' => $Categories_Products,
+                'slider' => $slider,
             ]);
     }
 

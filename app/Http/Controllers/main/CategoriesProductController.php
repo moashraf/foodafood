@@ -9,7 +9,7 @@ use App\Models\Categories_Products;
 
      
     function __construct() { 
-      //  App()->setLocale(App()->getLocale());
+        App()->setLocale('ar');
 
    }
 

@@ -56,7 +56,7 @@ class Categories_Products extends Model
         'title' => 'required|min:1',
         'slug' => 'required|min:1',
         'lang' => 'required|min:1',
-        'single_photo' => 'required|min:3|mimes:jpeg,jpg,png,gif',
+        'single_photo' => 'min:3|mimes:jpeg,jpg,png,gif',
         'body' => 'required|min:1'
     ];
 

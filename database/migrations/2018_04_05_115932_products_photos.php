@@ -14,7 +14,7 @@ class ProductsPhotos extends Migration
     public function up()
     {
  Schema::create('ProductsPhotos', function (Blueprint $table) {
-          //  $table->increments('id');
+             $table->increments('id');
             $table->integer('Product_id');
             $table->string('Photo');
             $table->string('lang');
